@@ -10,6 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.OneToMany;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "agence")
@@ -34,4 +37,10 @@ public class Agence {
 
     @Column(nullable = false, length = 20)
     private String telephone;
+
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> vehicules = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agence")
+    private List<Employe> employes = new ArrayList<>();
 }
